@@ -37,6 +37,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             startActivity(intent)
         })
 
+        binding.vmMain?.trendSearchUrl?.observe(this, Observer {
+            Log.d(TAG, "trendSearchUrl: ${it}")
+
+            if(it.isNullOrEmpty() == false) {
+                var intent = Intent(this@MainActivity, TrendWebActivity::class.java)
+                intent.putExtra(TrendWebActivity.URL, it)
+                startActivity(intent)
+            }
+        })
+
         binding.vmMain?.load()?.observe(this, Observer {
             Log.d(TAG, "Observe event: ${it.size}")
             (list.adapter as TrendPagingAdapter).submitList(it)

@@ -5,6 +5,7 @@ import com.afterwork.mytrendsearch.model.ISearchDataModel
 import com.afterwork.mytrendsearch.model.SearchDataModelImpl
 import com.afterwork.mytrendsearch.viewmodel.DetailWebViewModel
 import com.afterwork.mytrendsearch.viewmodel.MainViewModel
+import com.afterwork.mytrendsearch.viewmodel.TrendWebViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -27,6 +28,10 @@ var viewModelPart = module {
 
     viewModel {(linkUrl: String) ->
         DetailWebViewModel(linkUrl)
+    }
+
+    viewModel {(linkUrl: String) ->
+        TrendWebViewModel(linkUrl)
     }
 }
 

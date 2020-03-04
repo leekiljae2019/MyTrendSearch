@@ -1,18 +1,20 @@
 package com.afterwork.mytrendsearch.viewmodel
 
-import android.net.http.SslError
 import android.util.Log
 import android.view.View
-import android.webkit.*
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.afterwork.mytrendsearch.common.NotNullMutableLiveData
 import com.afterwork.mytrendsearch.viewmodel.base.BaseViewModel
 
-class DetailWebViewModel(val linkUrl: String) : BaseViewModel(){
+class TrendWebViewModel(val linkUrl: String) : BaseViewModel(){
     companion object{
-        val TAG = "DetailWebViewModel"
+        val TAG = "TrendWebViewModel"
     }
 
     val progress : NotNullMutableLiveData<Int> = NotNullMutableLiveData(0)
@@ -22,8 +24,8 @@ class DetailWebViewModel(val linkUrl: String) : BaseViewModel(){
 
 }
 
-@BindingAdapter("webinit")
-fun webInit(view: WebView, vm: DetailWebViewModel){
+@BindingAdapter("webtrend")
+fun webTrend(view: WebView, vm: TrendWebViewModel){
     view.setWebViewClient(WebViewClient()) // 클릭시 새창 안뜨게
     var settings = view.getSettings() //세부 세팅 등록
     settings.setJavaScriptEnabled(true) // 웹페이지 자바스크립트 허용 여부
